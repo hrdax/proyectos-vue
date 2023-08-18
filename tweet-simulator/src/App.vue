@@ -20,10 +20,10 @@ export default {
     TweetList,
   },
   setup() {
-    let tweets = ref(getTweetApi())
+    let tweets = ref(getTweetApi().reverse())
 
     const reloadTweets = () => {
-      tweets.value = getTweetApi()
+      tweets.value = getTweetApi().reverse()
     }
 
     return {
