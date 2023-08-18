@@ -1,10 +1,11 @@
 <template>
   <Menu :openCloseForm="openCloseForm" :showForm="showForm"/>
-  <TweetForm :showForm="showForm" />
+  <TweetForm :showForm="showForm" :reloadTweets="reloadTweets" />
   <TweetList :tweets="tweets" />
 </template>
 
 <script>
+import { ref } from 'vue' 
 import Menu from './components/Menu.vue'
 import TweetForm from './components/TweetForm.vue'
 import useFormTweet from './hooks/useFormTweet'
@@ -19,11 +20,16 @@ export default {
     TweetList,
   },
   setup() {
-    let tweets = getTweetApi()
+    let tweets = ref(getTweetApi())
+
+    const reloadTweets = () => {
+      tweets.value = getTweetApi()
+    }
 
     return {
       ...useFormTweet(),
       tweets,
+      reloadTweets,
     }
   }
   

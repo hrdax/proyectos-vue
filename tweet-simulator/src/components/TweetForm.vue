@@ -17,6 +17,7 @@ import { saveTweetApi } from '../api/tweet'
 export default {
     props: {
         showForm: Boolean,
+        reloadTweets: Function,
     },
 
     setup() {
