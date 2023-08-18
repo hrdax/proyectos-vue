@@ -1,11 +1,15 @@
 <template>
-  <h1>Simulador de Tweets</h1>
+  <Menu />
 </template>
 
 <script>
+import Menu from './components/Menu.vue'
 
 export default {
   name: 'App',
+  components: {
+    Menu,
+  }
   
 }
 </script>
