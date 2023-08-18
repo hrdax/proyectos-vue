@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from 'uuid'
 import { TWEETS } from '../utils/constants'
+import { size } from 'lodash'
 
 export function saveTweetApi(tweet, username) {
     const tweets = getTweetApi()
     
-    if(tweets.length === 0) {
+    if(size(tweets) === 0) {
         const tweetTemp = [
         {
             id: uuidv4(),
