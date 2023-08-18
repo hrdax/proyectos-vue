@@ -13,7 +13,9 @@
 
 <script>
 export default {
-
+    props: {
+        tweets: Array,
+    }
 }
 </script>
 
