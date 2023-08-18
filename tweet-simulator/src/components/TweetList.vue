@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <h1 class="text-center mb-4">Lista de Tweets</h1>
-        <div class="tweet">
-            <p class="tweet__title">Username</p>
-            <p class="tweet__text">Tweet mensaje</p>
-            <span>01/01/2020</span>
+        <div class="tweet" v-for="tweet in tweets" :key="tweet.id">
+            <p class="tweet__title">{{ tweet.username }}</p>
+            <p class="tweet__text">{{ tweet.tweet }}</p>
+            <span>{{ tweet.createdAt }}</span>
         </div>
     </div>
 
@@ -15,7 +15,7 @@
 export default {
     props: {
         tweets: Array,
-    }
+    },
 }
 </script>
 
