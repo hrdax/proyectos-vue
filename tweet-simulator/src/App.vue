@@ -1,6 +1,6 @@
 <template>
   <Menu :openCloseForm="openCloseForm" :showForm="showForm"/>
-  <TweetForm :showForm="showForm" :reloadTweets="reloadTweets" />
+  <TweetForm :showForm="showForm" :openCloseForm="openCloseForm" :reloadTweets="reloadTweets" />
   <TweetList :tweets="tweets" />
 </template>
 
