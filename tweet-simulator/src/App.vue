@@ -1,7 +1,7 @@
 <template>
   <Menu :openCloseForm="openCloseForm" :showForm="showForm"/>
   <TweetForm :showForm="showForm" :openCloseForm="openCloseForm" :reloadTweets="reloadTweets" />
-  <TweetList :tweets="tweets" />
+  <TweetList :tweets="tweets" :reloadTweets="reloadTweets" />
 </template>
 
 <script>
