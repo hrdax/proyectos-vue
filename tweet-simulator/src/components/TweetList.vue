@@ -1,11 +1,12 @@
 <template>
     <div class="container">
         <h1 class="text-center mb-4">Lista de Tweets</h1>
+        <p v-if="tweets.length === 0">No hay ningún tweet</p>
         <div class="tweet" v-for="tweet in tweets" :key="tweet.id">
             <p class="tweet__title">{{ tweet.username }}</p>
             <p class="tweet__text">{{ tweet.tweet }}</p>
             <span>{{ formatDate(tweet.createdAt) }}</span>
-            <Close />
+            <Close @click="deleteTweet(tweet.id)"/>
         </div>
     </div>
 
@@ -16,20 +17,29 @@
 import moment from 'moment'
 import 'moment/locale/es'
 import { Close } from './Icons/index'
+import { deleteTweetApi } from '../api/tweet'
 
 export default {
     props: {
         tweets: Array,
+        reloadTweets: Function,
     },
     components: {
         Close,
     },
-    setup() {
+    setup(props) {
         const formatDate = (date) => {
             return moment(date).fromNow()
         }
+
+        const deleteTweet = (idTweet) => {
+            deleteTweetApi(idTweet)
+            props.reloadTweets()
+        }
+
         return {
             formatDate,
+            deleteTweet,
         }
     }
 }
