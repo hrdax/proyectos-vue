@@ -1,4 +1,8 @@
-## proyectos-vue
+### proyectos-vue
+## Requerimientos para probar proyectos
+##### *Tener node js instalado*
+
+#### Proyectos: 
 
 # 1. Simulador de Tweets
 Para probar este proyecto seguir las siguientes instrucciones en una consola
