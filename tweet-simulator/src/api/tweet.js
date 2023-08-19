@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import { TWEETS } from '../utils/constants'
-import { size } from 'lodash'
+import { size, remove } from 'lodash'
 
 export function saveTweetApi(tweet, username) {
     const tweets = getTweetApi()
@@ -32,4 +32,14 @@ export function getTweetApi() {
         return JSON.parse(tweets)
     }
     return []
+}
+
+export function deleteTweetApi(idTweet) {
+    const tweets = getTweetApi()
+
+    remove(tweets, function(tweet) {
+        return tweet.id === idTweet
+    })
+
+    localStorage.setItem(TWEETS, JSON.stringify(tweets))
 }
