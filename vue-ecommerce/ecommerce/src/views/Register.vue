@@ -28,7 +28,7 @@
                     />
                 </div>
 
-                <button type="submit" class="ui button fluid primary">
+                <button type="submit" class="ui button fluid primary" :class="{ loading }">
                     Crear usuario
                 </button>
             </form>
@@ -41,6 +41,7 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
 import { registerApi } from '../api/user'
@@ -53,6 +54,9 @@ export default {
     setup() {
         let formData = ref({})
         let formError = ref({})
+        const router = useRouter()
+        let loading = ref(false)
+
 
         const schemaForm = Yup.object().shape({
             username: Yup.string().required(true),
@@ -61,13 +65,14 @@ export default {
         })
 
         const register = async () => {
+            loading.value = true
             formError.value = {}
 
             try {
                 await schemaForm.validate(formData.value, { abortEarly: false })
                 try {
                     const response = await registerApi(formData.value)
-                    console.log(response)
+                    router.push('/login')
                 } catch (error) {
                     console.log(error)
                 }
@@ -76,12 +81,13 @@ export default {
                     formError.value[err.path] = err.message
                 })
             }
-
+            loading.value = false
         }
         return {
             formData,
             register,
             formError,
+            loading,
         }
 
     }
