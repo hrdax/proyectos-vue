@@ -17,6 +17,9 @@
                     Crear usuario
                 </button>
             </form>
+            <router-link to="/login">
+                Iniciar sesión
+            </router-link>
         </div>
     </BasicLayout>
 </template>
@@ -32,6 +35,22 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.register {
+    text-align: center;
+    
+    > h2 {
+        margin: 50px 0 30px 0;
+    }
 
+    .ui.form {
+        max-width: 300px !important;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        input.error {
+            border-color: #faa;
+            background-color: #ffeded;
+        }
+    }
+}
 </style>
