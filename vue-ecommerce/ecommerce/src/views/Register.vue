@@ -38,6 +38,7 @@
 
 <script>
 import { ref } from 'vue'
+import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
 
 export default {
@@ -48,9 +49,22 @@ export default {
     setup() {
         let formData = ref({})
 
-        const register = () => {
+        const schemaForm = Yup.object().shape({
+            username: Yup.string().required(true),
+            email: Yup.string().email().required(true),
+            password: Yup.string().required(true),
+        })
+
+        const register = async () => {
             console.log('register')
             console.log(formData.value)
+
+            try {
+                await schemaForm.validate(formData.value, { abortEarly: false })
+            } catch (error) {
+                console.log("Error")
+                console.log(error)
+            }
 
         }
         return {
