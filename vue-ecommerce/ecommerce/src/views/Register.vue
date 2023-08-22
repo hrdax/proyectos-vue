@@ -1,10 +1,23 @@
 <template>
     <BasicLayout>
-        <h1>Register</h1>
+        <div class="register">  
+            <h2>Registro de usuario</h2>
+            <form class="ui form">
+                <div class="field">
+                    <input type="text" placeholder="Nombre de usuario" />
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Correo electrónico" />
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Contraseña" />
+                </div>
 
-        <router-link to="/login">
-            Iniciar Sesión
-        </router-link>
+                <button type="submit" class="ui button fluid primary">
+                    Crear usuario
+                </button>
+            </form>
+        </div>
     </BasicLayout>
 </template>
 
