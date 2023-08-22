@@ -1,16 +1,18 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <button class="ui button">Follow</button>
+    <BasicLayout> probando layout </BasicLayout>
+    
   </div>
 </template>
 
 <script>
+import BasicLayout from '../layouts/BasicLayout'
 
 export default {
   name: 'Home',
   components: {
-    
+    BasicLayout,
+
   }
 }
 </script>
