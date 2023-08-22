@@ -7,7 +7,8 @@
                     <input 
                     type="text" 
                     placeholder="Nombre de usuario" 
-                    v-model="formData.username"
+                    v-model="formData.identifier"
+                    :class="{ error: formError.identifier }"
                     />
                 </div>
                 <div class="field">
@@ -15,9 +16,10 @@
                     type="password" 
                     placeholder="Contraseña" 
                     v-model="formData.password"
+                    :class="{ error: formError.password }"
                     />
                 </div>
-                <button type="submit" class="ui button fluid primary">
+                <button type="submit" class="ui button fluid primary" :class="{ loading }">
                     Iniciar Sesión
                 </button>
             </form>
@@ -31,7 +33,7 @@
 
 <script>
 import { ref } from 'vue'
-
+import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
 
 export default {
@@ -41,13 +43,36 @@ export default {
     },
     setup() {
         let formData = ref({})
+        let formError = ref({})
+        let loading = ref(false)
 
-        const login = () => {
+        const schemaForm = Yup.object().shape({
+            identifier: Yup.string().required(true),
+            password: Yup.string().required(true),
+        })
+
+        const login = async () => {
+            formError.value = {}
+            loading.value = true
             console.log(formData.value)
+
+            try {
+                await schemaForm.validate(formData.value, {abortEarly: false,})
+                console.log('Formulario validado')
+            } catch (error) {
+                error.inner.forEach((err) => {
+                    formError.value[err.path] = err.message
+                })
+                loading.value = false
+            }
+
+            loading.value = false
         }
 
         return {
             formData,
+            formError,
+            loading,
             login,
         }
     }
