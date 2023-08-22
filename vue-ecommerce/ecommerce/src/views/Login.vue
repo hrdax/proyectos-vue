@@ -36,6 +36,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
+import { setTokenApi } from '../api/token'
 import { loginApi } from '../api/user'
 
 export default {
@@ -65,6 +66,7 @@ export default {
                 try{
                     const response = await loginApi(formData.value)
                     if (!response?.jwt) throw 'Credenciales incorrectas'
+                    setTokenApi(response.jwt)
                     router.push('/')
                 } catch (error) {
                     console.log(error)

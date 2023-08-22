@@ -1,5 +1,5 @@
 import { TOKEN } from '../utils/constants'
 
-export function setToken(token) {
+export function setTokenApi(token) {
     localStorage.setItem(TOKEN, token)
 }
