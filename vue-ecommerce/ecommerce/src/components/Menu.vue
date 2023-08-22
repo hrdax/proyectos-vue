@@ -12,18 +12,38 @@
                 </router-link>
             </div>
             <div class="right menu">
-                <router-link class="item" to="/login">
+                <router-link class="item" to="/login" v-if="!token">
                     Iniciar sesión
                 </router-link>
+                <template v-if="token">
+                    <router-link class="item" to="/orders">
+                        Mis pedidos
+                    </router-link>
+                    <span class="ui item cart">
+                        <i class="shopping cart icon"></i>
+                    </span>
+                    <span class="ui item logout">
+                        <i class="sign-out icon"></i>
+                    </span>
+                </template>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { getTokenApi } from '../api/token';
 export default {
     name: 'Menu',
+    
+    setup() {
+        const token = getTokenApi();
+        return { 
+            token,
+            }
+    }
 }
+
 </script>
 
 <style lang="scss" scoped>
