@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <BasicLayout> probando layout </BasicLayout>
-    
+    <BasicLayout> <h1>Home</h1> </BasicLayout>
   </div>
 </template>
 
