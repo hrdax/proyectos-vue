@@ -33,8 +33,10 @@
 
 <script>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
+import { loginApi } from '../api/user'
 
 export default {
     name: 'Login',
@@ -45,6 +47,7 @@ export default {
         let formData = ref({})
         let formError = ref({})
         let loading = ref(false)
+        const router = useRouter()
 
         const schemaForm = Yup.object().shape({
             identifier: Yup.string().required(true),
@@ -58,7 +61,14 @@ export default {
 
             try {
                 await schemaForm.validate(formData.value, {abortEarly: false,})
-                console.log('Formulario validado')
+                
+                try{
+                    const response = await loginApi(formData.value)
+                    if (!response?.jwt) throw 'Credenciales incorrectas'
+                    router.push('/')
+                } catch (error) {
+                    console.log(error)
+                }
             } catch (error) {
                 error.inner.forEach((err) => {
                     formError.value[err.path] = err.message
