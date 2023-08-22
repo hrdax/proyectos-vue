@@ -1,7 +1,7 @@
 <template>
     <BasicLayout>
-        <h1>Iniciar Sesión</h1>
         <div class="login">
+            <h2>Iniciar Sesión</h2>
             <form class="ui form">
                 <div class="field">
                     <input type="text" placeholder="Nombre de usuario" />
@@ -32,6 +32,22 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.login {
+    text-align: center;
+    > h2 {
+        margin: 50px 0 30px 0;
+    }
 
+    .ui.form {
+        max-width: 300px !important;
+        margin: 0 auto;
+        margin-bottom: 10px;
+
+        input.error {
+            border-color: #faa;
+            background-color: #ffeded;
+        }
+    }
+}
 </style>
