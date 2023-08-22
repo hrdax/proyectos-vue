@@ -43,6 +43,7 @@
 import { ref } from 'vue'
 import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
+import { registerApi } from '../api/user'
 
 export default {
     name: 'Register',
@@ -64,6 +65,12 @@ export default {
 
             try {
                 await schemaForm.validate(formData.value, { abortEarly: false })
+                try {
+                    const response = await registerApi(formData.value)
+                    console.log(response)
+                } catch (error) {
+                    console.log(error)
+                }
             } catch (error) {
                 error.inner.forEach((err) => {
                     formError.value[err.path] = err.message
