@@ -32,12 +32,13 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import * as Yup from 'yup'
 import BasicLayout from '../layouts/BasicLayout'
 import { setTokenApi } from '../api/token'
 import { loginApi } from '../api/user'
+import { getTokenApi } from '../api/token'
 
 export default {
     name: 'Login',
@@ -49,6 +50,11 @@ export default {
         let formError = ref({})
         let loading = ref(false)
         const router = useRouter()
+        const token = getTokenApi()
+
+        onMounted(() => {
+            if (token) router.push('/')
+        })
 
         const schemaForm = Yup.object().shape({
             identifier: Yup.string().required(true),
