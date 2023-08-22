@@ -8,6 +8,7 @@
                     type="text" 
                     placeholder="Nombre de usuario" 
                     v-model="formData.username"
+                    :class="{ error: formError.username }"
                     />
                 </div>
                 <div class="field">
@@ -15,6 +16,7 @@
                     type="text" 
                     placeholder="Correo electrónico" 
                     v-model="formData.email"
+                    :class="{ error: formError.email }"
                     />
                 </div>
                 <div class="field">
@@ -22,6 +24,7 @@
                     type="password" 
                     placeholder="Contraseña" 
                     v-model="formData.password"
+                    :class="{ error: formError.password }"
                     />
                 </div>
 
@@ -48,6 +51,7 @@ export default {
     },
     setup() {
         let formData = ref({})
+        let formError = ref({})
 
         const schemaForm = Yup.object().shape({
             username: Yup.string().required(true),
@@ -56,20 +60,21 @@ export default {
         })
 
         const register = async () => {
-            console.log('register')
-            console.log(formData.value)
+            formError.value = {}
 
             try {
                 await schemaForm.validate(formData.value, { abortEarly: false })
             } catch (error) {
-                console.log("Error")
-                console.log(error)
+                error.inner.forEach((err) => {
+                    formError.value[err.path] = err.message
+                })
             }
 
         }
         return {
             formData,
             register,
+            formError,
         }
 
     }
