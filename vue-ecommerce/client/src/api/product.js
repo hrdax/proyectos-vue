@@ -1,8 +1,8 @@
 import { API_URL } from "../utils/constants";
 
-export async function getProducts(limits = 1000) {
+export async function getProductsApi(limit = 1000) {
     try {
-        const response = await fetch(`${API_URL}api/products?_sort=created_at:desc&_limit=${limits}`)
+        const response = await fetch(`${API_URL}api/productos?_sort=created_at:desc&_limit=${limit}`)
         const result = await response.json()
         return result
     } catch (error) {
