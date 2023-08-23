@@ -39,7 +39,7 @@ export async function getProductsCartApi(){
             return productTemp.data.attributes.name
         })
 
-        console.log(combined)
+        return combined
     } catch (error) {
         console.log(error)
         return null
