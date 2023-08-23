@@ -1,4 +1,5 @@
 <template>
+<!-- eslint-disable vue/no-v-for-template-key -->
     <div class="ui secondary menu">
         <div class="ui container">
             <div class="left menu">
