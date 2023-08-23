@@ -8,7 +8,11 @@
                     src="../assets/logo.png" 
                     alt="Ecommerce" 
                     />
-                    <p>Categorias...</p>
+                    <template v-for="category in categories" :key="category.id">
+                        <router-link class="item" :to="category.slug">
+                            {{ category.title}}
+                        </router-link>
+                    </template>
                 </router-link>
             </div>
             <div class="right menu">
@@ -41,12 +45,12 @@ export default {
     name: 'Menu',
     
     setup() {
-        let categorias = ref(null)
+        let categories = ref(null)
         const token = getTokenApi()
 
         onMounted (async () => {
             const response = await getCategoriesApi()
-            console.log(response)
+            categories.value = response
         })
 
         const logout = () => {
@@ -56,8 +60,9 @@ export default {
 
         return { 
             token,
-            logout
-            }
+            logout,
+            categories,
+        }
     }
 }
 
