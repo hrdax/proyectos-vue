@@ -1,4 +1,5 @@
 <template>
+<!-- eslint-disable vue/no-multiple-template-root -->
     <div class="basic-layout">
         <Menu />
         <div class="ui container">
@@ -10,7 +11,7 @@
 
 <script>
 import Menu from '../components/Menu'
-import Cart from '../components/Cart'
+import Cart from '../components/Cart/Cart'
 
 export default {
     name: 'BasicLayout',
