@@ -5,15 +5,19 @@
             <slot />
         </div>
     </div>
+    
+    <Cart />
 </template>
 
 <script>
 import Menu from '../components/Menu'
+import Cart from '../components/Cart'
 
 export default {
     name: 'BasicLayout',
     components: {
         Menu,
+        Cart,
     }
 }
 </script>
