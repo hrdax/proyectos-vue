@@ -42,6 +42,7 @@ export default {
     display: felx;
     flex-direction: column;
     justify-content: space-between;
+    transition: transform 0.9s ease;
     transform: translateX(150%);
 
     &.open {
