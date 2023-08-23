@@ -34,12 +34,20 @@
 <script>
 import { getTokenApi } from '../api/token';
 import { deleteTokenApi } from '../api/token';
+import { ref, onMounted } from 'vue';
+import { getCategoriesApi } from '../api/category';
 
 export default {
     name: 'Menu',
     
     setup() {
-        const token = getTokenApi();
+        let categorias = ref(null)
+        const token = getTokenApi()
+
+        onMounted (async () => {
+            const response = await getCategoriesApi()
+            console.log(response)
+        })
 
         const logout = () => {
             deleteTokenApi();
