@@ -5,7 +5,6 @@
             <slot />
         </div>
     </div>
-    
     <Cart />
 </template>
 

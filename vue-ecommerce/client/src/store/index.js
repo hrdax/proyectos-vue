@@ -7,6 +7,9 @@ export default createStore({
   getters: {
   },
   mutations: {
+    setShowCart(state, payload) {
+      state.showCart = payload
+    }
   },
   actions: {
   },
