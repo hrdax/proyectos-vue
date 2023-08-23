@@ -9,8 +9,8 @@
                     alt="Ecommerce" 
                     />
                     <template v-for="category in categories" :key="category.id">
-                        <router-link class="item" :to="category.slug">
-                            {{ category.title}}
+                        <router-link class="item" :to="category.attributes.slug">
+                            {{ category.attributes.title}}
                         </router-link>
                     </template>
                 </router-link>
@@ -50,7 +50,8 @@ export default {
 
         onMounted (async () => {
             const response = await getCategoriesApi()
-            categories.value = response
+            categories.value = response.data
+
         })
 
         const logout = () => {
