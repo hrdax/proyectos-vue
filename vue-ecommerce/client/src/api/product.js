@@ -14,7 +14,7 @@ export async function getProductsApi(limit = 1000) {
 export async function getProductsCategory(category) {
     try {
         const response = await fetch(
-            `${API_URL}/api/productos?fields=name&populate=image,category&filters[category][slug][$eq]=${category}`)
+            `${API_URL}/api/productos?fields=name,price&populate=image,category&filters[category][slug][$eq]=${category}`)
         const result = await response.json()
         return result
     } catch (error) {
