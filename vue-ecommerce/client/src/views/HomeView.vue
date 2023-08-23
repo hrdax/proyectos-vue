@@ -31,7 +31,6 @@ export default {
     onMounted (async () => {
       const response = await getProductsApi()
       products.value = response.data
-      console.log(response.data)
     })
 
     return {
