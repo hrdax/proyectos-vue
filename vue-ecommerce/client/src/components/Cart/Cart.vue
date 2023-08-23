@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect } from 'vue'
 import { useStore } from 'vuex'
 import CartHeader from './CartHeader.vue'
 import { getProductsCartApi } from '../../api/cart'
@@ -21,9 +21,11 @@ components: {
  setup() {
     const store = useStore()
     const showCart = computed(() => store.state.showCart)
+    let products = ref(null)
 
     const getProductsCart = async () => {
-        await getProductsCartApi()
+        const response = await getProductsCartApi()
+        products.value = response.data
     }
 
     watchEffect(() => {
