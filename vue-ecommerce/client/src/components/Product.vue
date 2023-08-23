@@ -22,8 +22,7 @@ export default {
     props: {
         product: Object,
     },
-    setup(props) {
-        console.log(props)
+    setup() {
         return {
             API_URL,
         }
