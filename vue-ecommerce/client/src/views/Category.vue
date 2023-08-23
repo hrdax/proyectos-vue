@@ -5,7 +5,9 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
 import BasicLayout from '../layouts/BasicLayout.vue'; 
+import { getProductsCategory } from '../api/product'
 
 export default {
   name: 'Category',
@@ -18,7 +20,14 @@ export default {
     }
   },
   setup() {
-  
+    onMounted (async () => {
+      const response = await getProductsCategory("dulces")
+      console.log(response.data)
+    })
+
+    return {
+      
+    }
   }
 }
 
