@@ -1,7 +1,9 @@
 <template>
+<!-- eslint-disable vue/no-multiple-template-root -->
+  <div class="cart-dimmer" :class="{ open: showCart}" @click="closeCart"/>
   <div class="cart" :class="{ open: showCart }">
-    <h2>Carrito de compras</h2>
-    <button @click="closeCart">Cerrar Carrito</button>
+      <h2>Carrito de compras</h2>
+      <button @click="closeCart">Cerrar Carrito</button>
   </div>
 </template>
 
@@ -31,6 +33,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cart-dimmer {
+    opacity: 0;
+    transition: opacity 0.5 ease;
+
+    &.open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        opacity: 0.7;
+    }
+}
+
 .cart {
     position: fixed;
     right: 0;
