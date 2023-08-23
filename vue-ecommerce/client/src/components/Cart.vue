@@ -1,13 +1,28 @@
 <template>
-  <div class="cart">
+  <div class="cart" :class="{ open: showCart }">
     <h2>Carrito de compras</h2>
     <button>Cerrar Carrito</button>
   </div>
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+
 export default {
  name: 'cart',
+
+ setup() {
+    const store = useStore()
+    const showCart = computed(() => store.state.showCart)
+
+
+    return {
+        showCart,
+
+    }
+ }
+
 }
 </script>
 
