@@ -23,7 +23,7 @@
                     <router-link class="item" to="/orders">
                         Mis pedidos
                     </router-link>
-                    <span class="ui item cart">
+                    <span class="ui item cart" @click="openCart">
                         <i class="shopping cart icon"></i>
                     </span>
                     <span class="ui item logout" @click="logout">
@@ -40,11 +40,13 @@ import { getTokenApi } from '../api/token';
 import { deleteTokenApi } from '../api/token';
 import { ref, onMounted } from 'vue';
 import { getCategoriesApi } from '../api/category';
+import { useStore } from 'vuex';
 
 export default {
     name: 'Menu',
     
     setup() {
+        const store = useStore()
         let categories = ref(null)
         const token = getTokenApi()
 
@@ -59,10 +61,15 @@ export default {
             location.replace('/');
         }
 
+        const openCart = () => {
+            store.commit('setShowCart', true)
+        }
+
         return { 
             token,
             logout,
             categories,
+            openCart,
         }
     }
 }
