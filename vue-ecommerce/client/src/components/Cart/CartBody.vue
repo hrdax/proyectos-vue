@@ -1,4 +1,5 @@
 <template>
+<!-- eslint-disable vue/no-multiple-template-root -->
   <div class="cart-body" v-if="products">
     <div class="product" v-for="product in products" :key="product.data.id">
         <img 
@@ -20,6 +21,7 @@
         </div>
     </div>
   </div>
+  <h3 v-if="!products">No has añadido productos al carrito</h3>
 </template>
 
 <script>
