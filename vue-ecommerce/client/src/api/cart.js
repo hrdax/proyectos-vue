@@ -25,7 +25,7 @@ export async function getProductsCartApi(){
         const products = []
 
         for await (const idProduct of idProducts) {
-            const response = await fetch(`${API_URL}/api/productos/${idProduct}`)
+            const response = await fetch(`${API_URL}/api/productos/${idProduct}?populate=image`)
             const result = await response.json()
             products.push(result)
         }
