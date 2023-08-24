@@ -2,20 +2,25 @@
 <!-- eslint-disable vue/no-multiple-template-root -->
   <div class="cart-dimmer" :class="{ open: showCart}" @click="closeCart"/>
   <div class="cart" :class="{ open: showCart }">
-    <CartHeader :closeCart="closeCart" />
+    <div>
+        <CartHeader :closeCart="closeCart" />
+        <CartBody :products="products" />
+    </div>
   </div>
 </template>
 
 <script>
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, watch } from 'vue'
 import { useStore } from 'vuex'
 import CartHeader from './CartHeader.vue'
 import { getProductsCartApi } from '../../api/cart'
+import CartBody from './CartBody.vue'
 
 export default {
  name: 'cart',
 components: {
     CartHeader,
+    CartBody,
 },
 
  setup() {
@@ -25,7 +30,7 @@ components: {
 
     const getProductsCart = async () => {
         const response = await getProductsCartApi()
-        products.value = response.data
+        products.value = response
     }
 
     watchEffect(() => {
@@ -40,7 +45,7 @@ components: {
     return {
         showCart,
         closeCart,
-
+        products,
     }
  }
 
