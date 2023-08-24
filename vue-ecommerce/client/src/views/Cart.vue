@@ -27,15 +27,18 @@
         </tbody>
     </table>
 
-    <button class="ui button primary fluid" v-if="products">Pagar con Webpay</button>
+    <button class="ui button primary fluid" v-if="products" @click="createOrder">Pagar con Webpay</button>
     <h3 v-if="!products">No hay productos en el carrito</h3>
   </BasicLayout>
 </template>
 
 <script>
 import { ref, watchEffect } from 'vue'
+import jwtDecode from 'jwt-decode'
 import BasicLayout from '../layouts/BasicLayout.vue'
 import { getProductsCartApi, deleteAllProductCartApi } from '../api/cart.js'
+import { createOrderApi } from '../api/order'
+import { getTokenApi } from '../api/token'
 
 export default {
  name: 'Cart',
@@ -67,10 +70,29 @@ export default {
         reloadCart.value = !reloadCart.value
     }
 
+    const createOrder = async () => {
+        const token = getTokenApi()
+        const { id } = jwtDecode(token)
+
+        const data = {
+            user: id,
+            totalPayment: getTotal(),
+            data: products.value,
+        }
+
+        try {
+            const response = await createOrderApi(data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return {
         products,
         getTotal,
         deleteAllProductCart,
+        createOrder,
     }
  }
 }
