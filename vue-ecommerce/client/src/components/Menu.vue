@@ -105,6 +105,12 @@ export default {
                 cursor: pointer;
             }
         }
+        .logout {
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
+    
 }
 </style>
