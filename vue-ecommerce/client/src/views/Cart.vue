@@ -75,9 +75,11 @@ export default {
         const { id } = jwtDecode(token)
 
         const data = {
-            user: id,
-            totalPayment: getTotal(),
-            // data: products.value,
+            data: {
+                user: id,
+                totalPayment: getTotal(),
+                data: products.value,
+            }
         }
         try {
             const response = await createOrderApi(data)
