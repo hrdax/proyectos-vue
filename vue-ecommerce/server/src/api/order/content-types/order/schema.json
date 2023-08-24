@@ -16,10 +16,6 @@
       "type": "integer",
       "required": true
     },
-    "data": {
-      "type": "json",
-      "required": false
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",

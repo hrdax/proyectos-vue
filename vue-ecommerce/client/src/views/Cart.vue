@@ -77,9 +77,8 @@ export default {
         const data = {
             user: id,
             totalPayment: getTotal(),
-            data: products.value,
+            // data: products.value,
         }
-
         try {
             const response = await createOrderApi(data)
             
