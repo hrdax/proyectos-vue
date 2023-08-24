@@ -72,7 +72,7 @@ components: {
     position: fixed;
     right: 0;
     top: 0;
-    width: 300px;
+    width: 450px;
     height: 100vh;
     background-color: #fff;
     box-shadow: 0px 0px 26px 5px rgba(0,0,0,0.75);
