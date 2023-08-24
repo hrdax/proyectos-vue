@@ -34,9 +34,10 @@
 
 <script>
 import { ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 import jwtDecode from 'jwt-decode'
 import BasicLayout from '../layouts/BasicLayout.vue'
-import { getProductsCartApi, deleteAllProductCartApi } from '../api/cart.js'
+import { getProductsCartApi, deleteAllProductCartApi, deleteCartApi } from '../api/cart.js'
 import { createOrderApi } from '../api/order'
 import { getTokenApi } from '../api/token'
 
@@ -48,6 +49,7 @@ export default {
  setup() {
     let products = ref(null)
     let reloadCart = ref (false)
+    const router = useRouter()
 
     watchEffect(async () => {
         reloadCart.value
@@ -83,7 +85,9 @@ export default {
         }
         try {
             const response = await createOrderApi(data)
-            
+            deleteCartApi()
+            router.push("/orders")
+
         } catch (error) {
             console.log(error)
         }
