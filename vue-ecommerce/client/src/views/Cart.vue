@@ -16,7 +16,7 @@
                 <td>{{product.quantity}}</td>
                 <td>${{product.data.attributes.price}}</td>
                 <td style="text-align:center">
-                    <i class="close icon"></i>
+                    <i style="cursor: pointer" class="close icon" @click="deleteAllProductCart(product.data.id)"></i>
                 </td>
             </tr>
             <tr>
@@ -33,9 +33,9 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, watchEffect } from 'vue'
 import BasicLayout from '../layouts/BasicLayout.vue'
-import { getProductsCartApi } from '../api/cart.js'
+import { getProductsCartApi, deleteAllProductCartApi } from '../api/cart.js'
 
 export default {
  name: 'Cart',
@@ -44,8 +44,10 @@ export default {
  },
  setup() {
     let products = ref(null)
+    let reloadCart = ref (false)
 
-    onMounted(async () => {
+    watchEffect(async () => {
+        reloadCart.value
         const response = await getProductsCartApi()
         products.value = response
     })
@@ -60,9 +62,15 @@ export default {
         return totalTemp
     }
 
+    const deleteAllProductCart = async (idProduct) => {
+        deleteAllProductCartApi(idProduct)
+        reloadCart.value = !reloadCart.value
+    }
+
     return {
         products,
         getTotal,
+        deleteAllProductCart,
     }
  }
 }
