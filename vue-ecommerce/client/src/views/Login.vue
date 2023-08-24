@@ -23,6 +23,7 @@
                     Iniciar Sesión
                 </button>
             </form>
+            <b>¿No tienes cuenta?</b><br>
             <router-link to="/register">
                 Crear Usuario
             </router-link>
@@ -64,7 +65,6 @@ export default {
         const login = async () => {
             formError.value = {}
             loading.value = true
-            console.log(formData.value)
 
             try {
                 await schemaForm.validate(formData.value, {abortEarly: false,})
