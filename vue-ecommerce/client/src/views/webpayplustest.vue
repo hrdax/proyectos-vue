@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Prueba de Webpay Plus</h1>
-    <form method="post" :action="response.url">
+    <form method="post" :action="response.url" v-if="response">
         {{response.url}}
         {{response.token}}
 
@@ -12,20 +12,24 @@
 </template>
 
 <script>
-import { WebpayPlus, Options, IntegrationCommerceCodes, IntegrationApiKeys, Environment } from 'transbank-sdk';
+import { WebpayPlus } from 'transbank-sdk'
+import { Options, IntegrationApiKeys, Environment, IntegrationCommerceCodes } from 'transbank-sdk'
+import { ref, onMounted } from 'vue'
 
 export default {
     name: 'WebpayPlusTest',
     setup() {
+        let response = ref(null)
         const buyOrder = 'ordenCompra123';
         const sessionId = 'sesion123';
-        const amount = 10000;
+        const amount = 1000;
         const returnUrl = 'http://localhost:8080/webpayplusresult';
         const tx = new WebpayPlus.Transaction(new Options(IntegrationCommerceCodes.WEBPAY_PLUS, IntegrationApiKeys.WEBPAY, Environment.Integration));
 
         const transaction = async () => {
             try {
-                const response = await tx.create(buyOrder, sessionId, amount, returnUrl);
+                response.value = await tx.create(buyOrder, sessionId, amount, returnUrl);
+                console.log(response)
                 return response
 
             } catch (e) {
@@ -34,8 +38,12 @@ export default {
             }
         }
 
+        onMounted(async () => {
+            await transaction()
+        })
+
         return {
-            response: transaction()
+            response,
         }
     }
 };
