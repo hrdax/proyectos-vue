@@ -5,6 +5,7 @@ import Register from '../views/Register.vue'
 import Category from '../views/Category.vue'
 import Cart from '../views/Cart.vue'
 import Orders from '../views/orders.vue'
+import webpayplustest from '../views/webpayplustest.vue'
 
 const routes = [
   {
@@ -33,6 +34,10 @@ const routes = [
   {
     path: '/orders',
     component: Orders,
+  },
+  {
+    path: '/webpayplustest',
+    component: webpayplustest,
   },
 ]
 
