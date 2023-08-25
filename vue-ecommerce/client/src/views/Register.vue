@@ -26,6 +26,9 @@
                     v-model="formData.password"
                     :class="{ error: formError.password }"
                     />
+                    <p style="color: red">
+                       Contraseña debe ser mayor a 6 dígitos
+                    </p>
                 </div>
 
                 <button type="submit" class="ui button fluid primary" :class="{ loading }">
