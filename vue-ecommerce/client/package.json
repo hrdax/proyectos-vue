@@ -12,6 +12,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "semantic-ui-css": "^2.5.0",
+    "transbank-sdk": "^4.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",
