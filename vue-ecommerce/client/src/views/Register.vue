@@ -10,6 +10,9 @@
                     v-model="formData.username"
                     :class="{ error: formError.username }"
                     />
+                    <p style="color: red">
+                       Nombre de usuario debe ser mayor a 4 carácteres
+                    </p>
                 </div>
                 <div class="field">
                     <input 
@@ -27,7 +30,7 @@
                     :class="{ error: formError.password }"
                     />
                     <p style="color: red">
-                       Contraseña debe ser mayor a 6 dígitos
+                       Contraseña debe ser mayor a 6 carácteres
                     </p>
                 </div>
 
