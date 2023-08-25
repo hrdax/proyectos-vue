@@ -51,6 +51,7 @@ Para probar este proyecto seguir las siguientes instrucciones en una consola
 4. npm run serve
 5. Entrar al navegador web e ir hacia http://localhost:8080/ 
 ```
+O ir hacia https://hrdax.github.io/proyectos-vue/
 ![image](https://github.com/hrdax/proyectos-vue/assets/74321905/c6ff3f49-2562-40cb-839d-fbc019ff1dae)
 ![image](https://github.com/hrdax/proyectos-vue/assets/74321905/11449b49-ff98-4eba-bf7f-d2ce3e349b50)
 
