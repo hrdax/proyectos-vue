@@ -11,7 +11,7 @@
                     :class="{ error: formError.username }"
                     />
                     <p style="color: red">
-                       Nombre de usuario debe ser mayor a 4 carácteres
+                       Usuario debe ser mayor a 4 carácteres
                     </p>
                 </div>
                 <div class="field">
