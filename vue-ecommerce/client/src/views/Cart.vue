@@ -27,7 +27,7 @@
         </tbody>
     </table>
 
-    <button class="ui button primary fluid" v-if="products" @click="createOrder">Pagar con Webpay</button>
+    <button class="ui button primary fluid" v-if="products" @click="createOrder">Realizar Pedido</button>
     <h3 v-if="!products">No hay productos en el carrito</h3>
   </BasicLayout>
 </template>
