@@ -25,10 +25,10 @@
                         Mis pedidos
                     </router-link>
                     <span class="ui item cart" @click="openCart">
-                        <i class="shopping cart icon"></i>
+                        <i class="uil uil-shopping-cart-alt"></i>
                     </span>
                     <span class="ui item logout" @click="logout">
-                        <i class="sign-out icon"></i>
+                        <i class="uil uil-signout"></i>
                     </span>
                 </template>
             </div>
