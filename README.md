@@ -7,8 +7,11 @@
 # 1. Mini-Ecommerce
 Creacion de usuarios, compra, carrito, detalle de compras, pedidos realizados, categorias.
 
-## Para probar este proyecto puede hacerlo aqui: https://hrdax.github.io/
-## Si no ve nada debe tener paciencia si esta un poco lento eso significa que debe esperar unos 10-15 segundos y refrescar la pagina mientras que el servidor vuelva a prender ya que funciona por uso
+## Para probar este proyecto puede hacerlo aqui: https://hrdax.github.io/proyectos-vue/
+## Si no ve nada debe hacer click en cualquiera de las categorias o en el icono neutro y 
+## tener paciencia si esta un poco lento debe esperar unos 10-15 segundos mientras que el servidor vuelva a prender ya que funciona por uso
+![image](https://github.com/hrdax/proyectos-vue/assets/74321905/457d5ae9-ba0e-455d-8736-cade93e20c59)
+
 
 otra forma:
 ```
