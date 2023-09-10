@@ -8,8 +8,9 @@
 Creacion de usuarios, compra, carrito, detalle de compras, pedidos realizados, categorias.
 
 ## Para probar este proyecto puede hacerlo aqui: https://hrdax.github.io/proyectos-vue/
-## Si no ve nada debe hacer click en cualquiera de las categorias o en el icono neutro y 
-## tener paciencia si esta un poco lento debe esperar unos 10-15 segundos mientras que el servidor vuelva a prender ya que funciona por uso
+## Si no ve nada debe hacer click en el dibujo y 
+## tener paciencia si esta un poco lento debe esperar unos 10-30 segundos mientras que el servidor vuelva a prender ya que funciona por uso y contiene varios datos
+## Puede que al cerrar sesión le de un error 404 de github ya que hay un conflicto entre el github pages, pero si vuelve a la pagina todo funciona bien y se ha deslogeado y eliminado su token de usuario
 ![image](https://github.com/hrdax/proyectos-vue/assets/74321905/457d5ae9-ba0e-455d-8736-cade93e20c59)
 
 
